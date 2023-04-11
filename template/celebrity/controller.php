@@ -1,7 +1,5 @@
 <?php 
-namespace Celebrity;
-
- if (isset($_POST['insert'])) {
+ if (isset($_POST['celebrity_insert'])) {
     global $wpdb;
     $default =[
         'celebrity_name'=>'',
@@ -20,7 +18,7 @@ namespace Celebrity;
     $wpdb->insert('wp_2_bcc_celebrities_data',$insert);
     wp_redirect('?page=celebrities');
   }
-  if (isset($_POST['update'])) {
+  if (isset($_POST['celebrity_update'])) {
     global $wpdb;
     $default =[
       'celebrity_name'=>'',
@@ -40,7 +38,7 @@ namespace Celebrity;
     wp_redirect('?page=celebrities');
   }
 
-  function getDetail($id){
+  function getCelebrityDetail($id){
     global $wpdb;
     $query =  "SELECT * FROM `wp_2_bcc_celebrities_data` WHERE ID={$id}";
     $data = $wpdb->get_row($query);
