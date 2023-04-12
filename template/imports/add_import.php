@@ -28,7 +28,7 @@
                                 value="<?php echo (!empty($value->get_status)) ? $value->get_status : ''; ?>">
                         </div>
                         <div class="mb-3">
-                            <label for="finished_at" class="form-label">Created At</label>
+                            <label for="created_at" class="form-label">Created At</label>
                             <input type="number" name="created_at" class="form-control" id="created_at"
                                 value="<?php echo (!empty($value->created_at)) ? $value->created_at : ''; ?>">
                         </div>
