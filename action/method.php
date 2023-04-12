@@ -23,6 +23,12 @@ function addCharacterPage() {
     add_submenu_page('characters', 'Add Character', 'Add Character', 'manage_options', 'add-character', 'add_character_cb');
 }
 
+function addShowsPage() {
+    include plugin_dir_path(__FILE__).'../template/shows/controller.php';
+    add_menu_page('Shows', 'Shows', 'manage_options', 'shows', 'shows_cb', 'dashicons-embed-video');
+    add_submenu_page('shows', 'Add Show', 'Add Show', 'manage_options', 'add-show', 'add_show_cb');
+}
+
 function account_cb(){
     sbs_author_blog_script();
     $html = '';
@@ -114,6 +120,30 @@ function add_character_cb(){
         $value = getCharacterDetail($id);
     }
     include plugin_dir_path(__FILE__).'../template/characters/add_character.php';
+    $html .= ob_get_contents();
+    ob_end_clean();
+    echo $html;
+}
+
+function shows_cb(){
+    sbs_author_blog_script();
+    $html = '';
+    ob_start();
+    include plugin_dir_path(__FILE__).'../template/shows/list_show.php';
+    $html .= ob_get_contents();
+    ob_end_clean();
+    echo $html;
+}
+
+function add_show_cb(){
+    sbs_author_blog_script();
+    $html = '';
+    ob_start();
+    $id=(isset($_GET['id']))?$_GET['id']:0;
+    if($id){
+        $value = getShowDetail($id);
+    }
+    include plugin_dir_path(__FILE__).'../template/shows/add_show.php';
     $html .= ob_get_contents();
     ob_end_clean();
     echo $html;

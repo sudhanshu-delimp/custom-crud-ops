@@ -1,6 +1,6 @@
 <?php 
 global $wpdb;
-$table_name = "wp_2_bcc_characters_data";
+$table_name = "wp_2_bcc_shows_data";
 $query = "SELECT * FROM {$table_name}";
 $items = $wpdb->get_results($query);
 ?>
@@ -11,11 +11,11 @@ $items = $wpdb->get_results($query);
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Character Name</th>
-                    <th scope="col">Character Title Choice</th>
-                    <th scope="col">Character Movie</th>
-                    <th scope="col">Character Show</th>
-                    <th scope="col">Celebrity Celebrity</th>
+                    <th scope="col">Show Name</th>
+                    <th scope="col">Show IMDB Id</th>
+                    <th scope="col">Show Runtime</th>
+                    <th scope="col">Show Release Date</th>
+                    <th scope="col">Show Status</th>
                     <th scope="col">Action</th>
                 </tr>
                 </thead>
@@ -26,12 +26,12 @@ $items = $wpdb->get_results($query);
                                 ?>
                                     <tr>
                                         <th scope="row"><?php echo ($key+1);?></th>
-                                        <td><?php echo $item->character_name;?></td>
-                                        <td><?php echo $item->character_title_choice;?></td>
-                                        <td><?php echo $item->character_movie;?></td>
-                                        <td><?php echo $item->character_show;?></td>
-                                        <td><?php echo $item->character_celebrity;?></td>
-                                        <td><a class="text-decoration-none" href="admin.php?page=add-character&id=<?php echo $item->ID; ?>">Edit</a></td>
+                                        <td><?php echo $item->show_name;?></td>
+                                        <td><?php echo $item->show_imdb_id;?></td>
+                                        <td><?php echo $item->show_runtime;?></td>
+                                        <td><?php echo $item->show_release_date;?></td>
+                                        <td><?php echo $item->show_status;?></td>
+                                        <td><a class="text-decoration-none" href="admin.php?page=add-show&id=<?php echo $item->ID; ?>">Edit</a></td>
                                     </tr>
                                 <?php
                             }

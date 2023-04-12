@@ -19,7 +19,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="character_movie" class="form-label">Character Movie</label>
-                            <select type="text" name="character_movie" class="form-control" id="character_movie"
+                            <select name="character_movie" class="form-control" id="character_movie"
                                 value="<?php echo (!empty($value->character_movie)) ? $value->character_movie : ''; ?>">
                                 <option value="1">Xyz Movie</option>
                                 <option value="2">Abc Movie</option>
@@ -29,7 +29,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="character_show" class="form-label">Character Show</label>
-                            <select type="text" name="character_show" class="form-control" id="character_show"
+                            <select name="character_show" class="form-control" id="character_show"
                                 value="<?php echo (!empty($value->character_show)) ? $value->character_show : ''; ?>">
                                 <option value="1">Xyz</option>
                                 <option value="2">Abc</option>
@@ -39,7 +39,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="character_celebrity" class="form-label">Character Celebrity</label>
-                            <select type="text" name="character_celebrity" class="form-control"
+                            <select name="character_celebrity" class="form-control"
                                 id="character_celebrity"><?php echo (!empty($value->character_celebrity)) ? $value->character_celebrity : ''; ?>
                                 <option value="1">Xyz</option>
                                 <option value="2">Abc</option>
@@ -52,14 +52,14 @@
                             <input type="number" name="character_primary" class="form-control" id="character_primary" value="<?php echo (!empty($value->character_primary) ? ($value->character_primary) : '') ?>">
                         </div>
                         <div class="mb-3">
-                            <label for="character_description" class="form-label">Movie Image Galleries</label>
-                            <textarea type="text" name="character_description" class="form-control" id="character_description">
-                                <?php echo (!empty($value->character_images))?$value->character_description:'';?>
+                            <label for="character_primary" class="form-label">Character Description</label>
+                            <textarea name="character_description" class="form-control" id="character_description">
+                                <?php echo (!empty($value->character_description) ? ($value->character_description) : '') ?>
                             </textarea>
                         </div>
                         <div class="mb-3">
                             <label for="character_character" class="form-label">Character Character</label>
-                            <select type="text" name="character_character" class="form-control"
+                            <select name="character_character" class="form-control"
                                 id="character_character"><?php echo (!empty($value->character_character)) ? $value->character_character : ''; ?>
                                 <option value="1">Xyz</option>
                                 <option value="2">Abc</option>
