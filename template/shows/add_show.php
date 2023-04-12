@@ -33,7 +33,7 @@
                                 id="show_status"><?php echo (!empty($value->show_status)) ? $value->show_status : ''; ?>
                         </div>
                         <div class="mb-3">
-                            <label for="character_primary" class="form-label">Show Description</label>
+                            <label for="show_description" class="form-label">Show Description</label>
                             <textarea name="show_description" class="form-control" id="show_description">
                                  <?php echo (!empty($value->show_description) ? ($value->show_description) : '') ?>
                             </textarea>

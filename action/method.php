@@ -29,6 +29,12 @@ function addShowsPage() {
     add_submenu_page('shows', 'Add Show', 'Add Show', 'manage_options', 'add-show', 'add_show_cb');
 }
 
+function addImportsPage() {
+    include plugin_dir_path(__FILE__).'../template/imports/controller.php';
+    add_menu_page('Imports', 'Imports', 'manage_options', 'imports', 'imports_cb', 'dashicons-admin-plugins');
+    add_submenu_page('imports', 'Add Import', 'Add Import', 'manage_options', 'add-import', 'add_import_cb');
+}
+
 function account_cb(){
     sbs_author_blog_script();
     $html = '';
@@ -144,6 +150,30 @@ function add_show_cb(){
         $value = getShowDetail($id);
     }
     include plugin_dir_path(__FILE__).'../template/shows/add_show.php';
+    $html .= ob_get_contents();
+    ob_end_clean();
+    echo $html;
+}
+
+function imports_cb(){
+    sbs_author_blog_script();
+    $html = '';
+    ob_start();
+    include plugin_dir_path(__FILE__).'../template/imports/list_import.php';
+    $html .= ob_get_contents();
+    ob_end_clean();
+    echo $html;
+}
+
+function add_import_cb(){
+    sbs_author_blog_script();
+    $html = '';
+    ob_start();
+    $id=(isset($_GET['id']))?$_GET['id']:0;
+    if($id){
+        $value = getImportDetail($id);
+    }
+    include plugin_dir_path(__FILE__).'../template/imports/add_import.php';
     $html .= ob_get_contents();
     ob_end_clean();
     echo $html;
