@@ -5,4 +5,3 @@
  add_action('admin_menu', 'addCharacterPage');
  add_action('admin_menu', 'addShowsPage');
  add_action('admin_menu', 'addImportsPage');
-?>

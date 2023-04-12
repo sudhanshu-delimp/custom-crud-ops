@@ -10,47 +10,38 @@
                         <div class="row form-group">
                             <div class="col-md-12 mb-3">
                                 <label for="celebrity_name" class="form-label">Celebrity Name</label>
-                                <input type="text" name="celebrity_name" class="form-control" id="celebrity_name"
-                                    value="<?php echo (!empty($value->celebrity_name)) ? $value->celebrity_name : ''; ?>">
+                                <input type="text" name="celebrity_name" class="form-control" id="celebrity_name" value="<?php echo (!empty($value->celebrity_name)) ? $value->celebrity_name : ''; ?>">
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label for="celebrity_imdb_id" class="form-label">Celebrity IMDB ID</label>
-                                <input type="text" name="celebrity_imdb_id" class="form-control" id="celebrity_imdb_id"
-                                    value="<?php echo (!empty($value->celebrity_imdb_id)) ? $value->celebrity_imdb_id : ''; ?>">
+                                <input type="text" name="celebrity_imdb_id" class="form-control" id="celebrity_imdb_id" value="<?php echo (!empty($value->celebrity_imdb_id)) ? $value->celebrity_imdb_id : ''; ?>">
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label for="celebrity_birth_date" class="form-label">Celebrity Birth Date</label>
-                                <input type="text" name="celebrity_birth_date" class="form-control"
-                                    id="celebrity_birth_date"
-                                    value="<?php echo (!empty($value->celebrity_birth_date)) ? $value->celebrity_birth_date : ''; ?>">
+                                <input type="text" name="celebrity_birth_date" class="form-control" id="celebrity_birth_date" value="<?php echo (!empty($value->celebrity_birth_date)) ? $value->celebrity_birth_date : ''; ?>">
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label for="celebrity_birth_place" class="form-label">Celebrity Birth Place</label>
-                                <input type="text" name="celebrity_birth_place" class="form-control"
-                                    id="celebrity_birth_place"
-                                    value="<?php echo (!empty($value->celebrity_birth_place)) ? $value->celebrity_birth_place : ''; ?>">
+                                <input type="text" name="celebrity_birth_place" class="form-control" id="celebrity_birth_place" value="<?php echo (!empty($value->celebrity_birth_place)) ? $value->celebrity_birth_place : ''; ?>">
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label for="celebrity_bio" class="form-label">Celebrity Bio</label>
-                                <textarea type="text" name="celebrity_bio" class="form-control"
-                                    id="celebrity_bio"><?php echo (!empty($value->celebrity_bio)) ? $value->celebrity_bio : ''; ?></textarea>
+                                <textarea type="text" name="celebrity_bio" class="form-control" id="celebrity_bio"><?php echo (!empty($value->celebrity_bio)) ? $value->celebrity_bio : ''; ?></textarea>
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label for="celebrity_image_galleries" class="form-label">Celebrity Image
                                     Galleries</label>
-                                <input type="file" name="celebrity_image_galleries" class="form-control"
-                                    id="celebrity_image_galleries"
-                                    value="<?php // echo (!empty($value))?$value->celebrity_imdb_id:'';
+                                <input type="file" name="celebrity_image_galleries" class="form-control" id="celebrity_image_galleries" value="<?php // echo (!empty($value))?$value->celebrity_imdb_id:'';
                                                                                                                                                 ?>">
                             </div>
                         </div>
@@ -86,12 +77,12 @@
                         <?php
                         if ($id) {
                         ?>
-                        <input type="hidden" name="row_id" value="<?php echo $id; ?>">
-                        <button type="submit" name="celebrity_update" class="btn btn-primary">Update</button>
+                            <input type="hidden" name="row_id" value="<?php echo $id; ?>">
+                            <button type="submit" name="celebrity_update" class="btn btn-primary">Update</button>
                         <?php
                         } else {
                         ?>
-                        <button type="submit" name="celebrity_insert" class="btn btn-primary">Submit</button>
+                            <button type="submit" name="celebrity_insert" class="btn btn-primary">Submit</button>
                         <?php
                         }
                         ?>

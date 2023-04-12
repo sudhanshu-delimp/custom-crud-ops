@@ -46,4 +46,3 @@
     $data = $wpdb->get_row($query);
     return $data;
   }
-?>
