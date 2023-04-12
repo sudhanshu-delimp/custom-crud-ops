@@ -13,8 +13,14 @@ function addCelebrityPage() {
 
 function addMoviePage() {
     include plugin_dir_path(__FILE__).'../template/movies/controller.php';
-    add_menu_page('Movies', 'Movies', 'manage_options' ,'movies', 'movies_cb', 'dashicons-admin-users');
+    add_menu_page('Movies', 'Movies', 'manage_options' ,'movies', 'movies_cb', 'dashicons-video-alt2');
     add_submenu_page("movies", "Add Movie", "Add Movie", "manage_options", "add-movie", "add_movie_cb");
+}
+
+function addCharacterPage() {
+    include plugin_dir_path(__FILE__).'../template/characters/controller.php';
+    add_menu_page('Characters', 'Characters', 'manage_options', 'characters', 'characters_cb', 'dashicons-admin-customizer');
+    add_submenu_page('characters', 'Add Character', 'Add Character', 'manage_options', 'add-character', 'add_character_cb');
 }
 
 function account_cb(){
@@ -84,6 +90,30 @@ function add_movie_cb(){
         $value = getMovieDetail($id);
     }
     include plugin_dir_path(__FILE__).'../template/movies/add_movie.php';
+    $html .= ob_get_contents();
+    ob_end_clean();
+    echo $html;
+}
+
+function characters_cb(){
+    sbs_author_blog_script();
+    $html = '';
+    ob_start();
+    include plugin_dir_path(__FILE__).'../template/characters/list_character.php';
+    $html .= ob_get_contents();
+    ob_end_clean();
+    echo $html;
+}
+
+function add_character_cb(){
+    sbs_author_blog_script();
+    $html = '';
+    ob_start();
+    $id=(isset($_GET['id']))?$_GET['id']:0;
+    if($id){
+        $value = getCharacterDetail($id);
+    }
+    include plugin_dir_path(__FILE__).'../template/characters/add_character.php';
     $html .= ob_get_contents();
     ob_end_clean();
     echo $html;
