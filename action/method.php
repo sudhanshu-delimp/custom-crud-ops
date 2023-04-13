@@ -41,6 +41,13 @@ function addImportsPage()
     add_submenu_page('imports', 'Add Import', 'Add Import', 'manage_options', 'add-import', 'add_import_cb');
 }
 
+function addRelationship()
+{
+    include plugin_dir_path(__FILE__) . '../template/relationships/controller.php';
+    add_menu_page('Relationships', 'Relationships', 'manage_options', 'relationships', 'relationship_cb', 'dashicons-universal-access');
+    add_submenu_page('relationships', 'Add Relationship', 'Add Relationship', 'manage_options', 'add-relationship', 'add_relationship_cb');
+}
+
 function account_cb()
 {
     sbs_author_blog_script();
@@ -192,6 +199,32 @@ function add_import_cb()
         $value = getImportDetail($id);
     }
     include plugin_dir_path(__FILE__) . '../template/imports/add_import.php';
+    $html .= ob_get_contents();
+    ob_end_clean();
+    echo $html;
+}
+
+function relationship_cb()
+{
+    sbs_author_blog_script();
+    $html = '';
+    ob_start();
+    include plugin_dir_path(__FILE__) . '../template/relationships/list_relationship.php';
+    $html .= ob_get_contents();
+    ob_end_clean();
+    echo $html;
+}
+
+function add_relationship_cb()
+{
+    sbs_author_blog_script();
+    $html = '';
+    ob_start();
+    $id = (isset($_GET['id'])) ? $_GET['id'] : 0;
+    if ($id) {
+        $value = getRelationshipDetail($id);
+    }
+    include plugin_dir_path(__FILE__) . '../template/relationships/add_relationship.php';
     $html .= ob_get_contents();
     ob_end_clean();
     echo $html;
