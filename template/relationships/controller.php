@@ -6,7 +6,7 @@
           'post_date'=>date('Y-m-d H:m:s'),
           'post_date_gmt'=>date('Y-m-d H:m:s'),
           'post_content'=>'',
-          'post_title'=>'',
+          'post_title'=>$_POST['post_type_from'].' to '.$_POST['post_type_to'],
           'post_excerpt'=>'',
           'post_status'=>'publish',
           'comment_status'=>'closed',
@@ -28,6 +28,20 @@
     $insert = shortcode_atts($default,$_POST);
     $wpdb->insert('wp_posts',$insert);
 
+
+    //Inserting in `wp_postmeta` table
+    $metaValues = [
+      'from' => $_POST['post_type_from'],
+      'to' => $_POST['post_type_to']
+    ];
+
+    $metaKey = 'relationship';
+    $postId = $wpdb->insert_id;
+ 
+    // Set all key/value pairs in $metaValues
+    update_post_meta($postId, $metaKey, maybe_serialize($metaValues));
+
+
     // $default1 =[
     //   'from'=>$_POST['post_type_from'],
     //   'to'=>$_POST['post_type_to'],
@@ -44,7 +58,7 @@
           'post_date'=>date('Y-m-d H:m:s'),
           'post_date_gmt'=>date('Y-m-d H:m:s'),
           'post_content'=>'',
-          'post_title'=>'',
+          'post_title'=>$_POST['post_type_from'].' to '.$_POST['post_type_to'],
           'post_excerpt'=>'',
           'post_status'=>'publish',
           'comment_status'=>'closed',
@@ -65,15 +79,27 @@
     ];
     $update = shortcode_atts($default,$_POST);
     $wpdb->update('wp_posts',$update,['ID'=>$_POST['row_id']]);
+
+        //Updating in `wp_postmeta` table
+        $metaValues = [
+          'from' => $_POST['post_type_from'],
+          'to' => $_POST['post_type_to']
+        ];
+    
+        $metaKey = 'relationship';
+        $postId = $_POST['row_id'];
+     
+        // Set all key/value pairs in $metaValues
+        update_post_meta($postId, $metaKey, maybe_serialize($metaValues));
+
     wp_redirect('?page=relationships');
   }
 
   function getRelationshipDetail($id){
     global $wpdb;
-    $query1 =  "SELECT * FROM `wp_posts` WHERE ID={$id}";
-    $data1 = $wpdb->get_row($query1);
-    $query2 =  "SELECT * FROM `wp_mb_relationships` WHERE type='$data1->post_title'";
-    $data2 = $wpdb->get_row($query2);
-    $data = [$data1, $data2];
+    $query =  "SELECT * FROM `wp_posts` WHERE ID={$id}";
+    $data = $wpdb->get_row($query);
+    // $query2 =  "SELECT * FROM `wp_mb_relationships` WHERE type='$data1->post_title'";
+    // $data2 = $wpdb->get_row($query2);
     return $data;
   }

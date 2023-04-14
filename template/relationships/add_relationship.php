@@ -14,24 +14,28 @@ $models = $wpdb->get_results($query);
                 </div>
                 <div class="card-body">
                     <form action="" method="post">
-                    <div class="mb-3">
+                         <!-- <div class="mb-3">
                             <label for="post_title" class="form-label">Relationship Name</label>
-                            <input type="text" name="post_title" class="form-control" id="post_title" value="<?php echo (!empty($value[0]->post_title)) ? $value[0]->post_title : ''; ?>">
-                        </div>
+                            <input type="text" name="post_title" class="form-control" id="post_title" value="<?php //echo (!empty($value[0]->post_title)) ? $value[0]->post_title : ''; ?>">
+                        </div> -->
                         <div class="mb-3">
                             <label for="movie_name" class="form-label">Post Type</label>
+                            <?php
+                                    $post_type_data = explode('to', $value->post_title);
+                                    $post_type_from = trim($post_type_data[0]);
+                                    $post_type_to = trim($post_type_data[1]);
+                            ?>
                             <select name="post_type_from" id="post_type_from">
                                 <option>Select</option>
-                               
                                 <?php
                                     foreach($models as $model) {
-                                        if($model->id == $value[1]->from){
+                                        if($model->model_name == $post_type_from){
                                             $sel = 'selected';
                                         }
                                         else{
                                             $sel = '';
                                         }
-                                        echo "<option $sel value='$model->id'>$model->model_name</option>";
+                                        echo "<option $sel value='$model->model_name'>$model->model_name</option>";
                                     }
                                 ?>
                             </select>
@@ -42,13 +46,13 @@ $models = $wpdb->get_results($query);
                                 <option value="">Select</option>
                                 <?php
                                     foreach($models as $model) {
-                                        if($model->id == $value[1]->to){
+                                        if($model->model_name == $post_type_to){
                                             $sel = 'selected';
                                         }
                                         else{
                                             $sel = '';
                                         }
-                                        echo "<option $sel value='$model->id'>$model->model_name</option>";
+                                        echo "<option $sel value='$model->model_name'>$model->model_name</option>";
                                     }
                                 ?>
                             </select>
